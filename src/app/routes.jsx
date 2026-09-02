@@ -1,5 +1,6 @@
 import { lazy } from 'react'
 import { RootLayout } from '@/components/layout/RootLayout'
+import { RouteErrorBoundary } from '@/components/errors'
 import HomePage from '@/pages/HomePage'
 
 // The homepage loads eagerly; everything else is split so the first paint of
@@ -19,11 +20,25 @@ const ContactPage = lazy(() => import('@/pages/ContactPage'))
 const LegalPage = lazy(() => import('@/pages/LegalPage'))
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
 
+/**
+ * Gives every child route the same error element, so one failing page renders
+ * the fallback inside the layout instead of blanking the whole app. Applied
+ * here rather than repeated on sixteen route objects.
+ */
+const withErrorBoundary = (routeList) =>
+  routeList.map((route) => ({
+    ...route,
+    errorElement: <RouteErrorBoundary variant="inline" />,
+  }))
+
 export const routes = [
   {
     path: '/',
     element: <RootLayout />,
-    children: [
+    // Catches failures in RootLayout itself, where there is no shell left to
+    // render inside — so this one takes over the full page.
+    errorElement: <RouteErrorBoundary variant="page" />,
+    children: withErrorBoundary([
       { index: true, element: <HomePage /> },
       { path: 'about', element: <AboutPage /> },
       { path: 'approach', element: <ApproachPage /> },
@@ -40,6 +55,6 @@ export const routes = [
       { path: 'privacy', element: <LegalPage document="privacy" /> },
       { path: 'terms', element: <LegalPage document="terms" /> },
       { path: '*', element: <NotFoundPage /> },
-    ],
+    ]),
   },
 ]
