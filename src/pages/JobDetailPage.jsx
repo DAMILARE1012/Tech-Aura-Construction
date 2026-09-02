@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema, jobPostingSchema } from '@/components/seo'
 import { Briefcase, Clock, MapPin } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { PageHero } from '@/components/ui/PageHero'
@@ -7,14 +8,11 @@ import { Spinner } from '@/components/ui/Spinner'
 import { ErrorState } from '@/components/ui/StateBlocks'
 import { ApplicationForm } from '@/features/careers/components/ApplicationForm'
 import { useGetJobBySlugQuery } from '@/features/careers/careersApi'
-import { usePageTitle } from '@/hooks/usePageTitle'
 import { formatDate } from '@/utils/format'
 
 export default function JobDetailPage() {
   const { slug } = useParams()
   const { data: job, isLoading, isError, error, refetch } = useGetJobBySlugQuery(slug)
-
-  usePageTitle(job?.title)
 
   if (isLoading) {
     return (
@@ -39,6 +37,21 @@ export default function JobDetailPage() {
 
   return (
     <>
+      <Seo
+        title={`${job.title} — ${job.location}`}
+        description={job.summary}
+        path={`/careers/${job.slug}`}
+      />
+      <JsonLd
+        schema={[
+          jobPostingSchema(job),
+          breadcrumbSchema([
+            { label: 'Home', to: '/' },
+            { label: 'Careers', to: '/careers' },
+            { label: job.title },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={job.department}
         title={job.title}

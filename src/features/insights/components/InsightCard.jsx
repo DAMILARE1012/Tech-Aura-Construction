@@ -20,7 +20,7 @@ export function InsightCard({ insight, layout = 'stack' }) {
         >
           <img
             src={insight.image}
-            alt=""
+            alt={insight.title}
             loading="lazy"
             className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />

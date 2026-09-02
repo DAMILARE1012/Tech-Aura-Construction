@@ -1,0 +1,19 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# No value in crawling the SPA asset bundles.
+Disallow: /assets/
+
+# AI crawlers are allowed — visibility in AI answers matters as much as
+# classic search for a firm being researched before a tender.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://www.tech-aura.ng/sitemap.xml

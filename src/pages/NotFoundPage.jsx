@@ -1,12 +1,17 @@
+import { Seo } from '@/components/seo'
 import { Container } from '@/components/ui/Container'
 import { Button } from '@/components/ui/Button'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function NotFoundPage() {
-  usePageTitle('Page not found')
 
   return (
-    <section className="bg-ink-900 py-32 md:py-44">
+    <>
+      <Seo
+        title="Page not found"
+        description="This page could not be found. Browse Tech-Aura projects, services and careers instead."
+        noIndex
+      />
+      <section className="bg-ink-900 py-32 md:py-44">
       <Container className="text-center">
         <p className="text-display text-7xl text-aura-500 md:text-9xl">404</p>
         <h1 className="text-display mt-6 text-3xl text-white md:text-5xl">
@@ -25,6 +30,7 @@ export default function NotFoundPage() {
           </Button>
         </div>
       </Container>
-    </section>
+      </section>
+    </>
   )
 }

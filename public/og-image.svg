@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Tech-Aura Construction and Engineering Services, Lagos, Nigeria">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#0b0f14"/>
+      <stop offset="55%"  stop-color="#0e2a1f"/>
+      <stop offset="100%" stop-color="#0d402d"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#3cb87d"/>
+      <stop offset="100%" stop-color="#0f7a4d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Arc motif from the logo, oversized as a background element -->
+  <circle cx="1020" cy="150" r="230" fill="none" stroke="#1a9b62" stroke-width="46"
+          stroke-linecap="round" stroke-dasharray="1080 365" transform="rotate(-45 1020 150)"
+          opacity="0.22"/>
+
+  <!-- Solar array motif, bottom right -->
+  <g fill="url(#panel)" opacity="0.5">
+    <path d="M910 560 L1050 560 L1050 505 L910 519 Z"/>
+    <path d="M1080 560 L1220 560 L1220 505 L1080 519 Z"/>
+  </g>
+
+  <!-- Logo mark -->
+  <g transform="translate(80 72)">
+    <circle cx="34" cy="34" r="29" fill="none" stroke="#1a9b62" stroke-width="6"
+            stroke-linecap="round" stroke-dasharray="136 46" transform="rotate(-45 34 34)"/>
+    <path d="M20 44 L34 20 L48 44" fill="none" stroke="#ffffff" stroke-width="6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="146" y="100" font-family="Archivo, Arial Black, sans-serif" font-size="30"
+        font-weight="800" fill="#ffffff" letter-spacing="1">TECH-AURA</text>
+  <text x="146" y="126" font-family="Archivo, Arial, sans-serif" font-size="13"
+        font-weight="600" fill="#72d2a1" letter-spacing="4.2">CONSTRUCTION &amp; ENGINEERING</text>
+
+  <text x="80" y="290" font-family="Archivo, Arial Black, sans-serif" font-size="82"
+        font-weight="800" fill="#ffffff" letter-spacing="-2">We Build What</text>
+  <text x="80" y="376" font-family="Archivo, Arial Black, sans-serif" font-size="82"
+        font-weight="800" fill="#ffffff" letter-spacing="-2">Nigeria Needs Next</text>
+
+  <rect x="80" y="418" width="86" height="5" fill="#1a9b62"/>
+
+  <text x="80" y="474" font-family="Inter, Arial, sans-serif" font-size="25" fill="#a9e6c4">
+    Energy-efficient buildings, roads, power and water infrastructure
+  </text>
+
+  <text x="80" y="556" font-family="Archivo, Arial, sans-serif" font-size="17"
+        font-weight="700" fill="#ffffff" letter-spacing="2.4">LAGOS, NIGERIA</text>
+  <text x="290" y="556" font-family="Archivo, Arial, sans-serif" font-size="17"
+        font-weight="700" fill="#72d2a1" letter-spacing="2.4">SINCE 2009</text>
+  <text x="470" y="556" font-family="Archivo, Arial, sans-serif" font-size="17"
+        font-weight="700" fill="#72d2a1" letter-spacing="2.4">340+ PROJECTS</text>
+</svg>

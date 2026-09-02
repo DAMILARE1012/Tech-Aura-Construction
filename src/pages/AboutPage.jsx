@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -6,13 +7,18 @@ import { ArrowLink } from '@/components/ui/ArrowLink'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { companyStats, milestones } from '@/data/company'
 import { CREDENTIALS, CONTACT } from '@/constants/site'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function AboutPage() {
-  usePageTitle('About Us')
 
   return (
     <>
+      <Seo
+        title="About Us"
+        description="Founded in Lagos in 2009, Tech-Aura is a Nigerian construction and engineering company with 1,400 staff across four offices, delivering in nine states."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'About Us' }])}
+      />
       <PageHero
         eyebrow="About us"
         title="A Nigerian firm, building for Nigeria"

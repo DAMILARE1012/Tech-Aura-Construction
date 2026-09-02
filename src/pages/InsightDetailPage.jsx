@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema, articleSchema } from '@/components/seo'
 import { Link, useParams } from 'react-router-dom'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
@@ -7,14 +8,11 @@ import { ErrorState } from '@/components/ui/StateBlocks'
 import { InsightCard } from '@/features/insights/components/InsightCard'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { useGetInsightBySlugQuery } from '@/features/insights/insightsApi'
-import { usePageTitle } from '@/hooks/usePageTitle'
 import { formatDate } from '@/utils/format'
 
 export default function InsightDetailPage() {
   const { slug } = useParams()
   const { data: insight, isLoading, isError, error, refetch } = useGetInsightBySlugQuery(slug)
-
-  usePageTitle(insight?.title)
 
   if (isLoading) {
     return (
@@ -39,6 +37,26 @@ export default function InsightDetailPage() {
 
   return (
     <>
+      <Seo
+        title={insight.title}
+        description={insight.excerpt}
+        image={insight.image}
+        type="article"
+        path={`/insights/${insight.slug}`}
+        publishedTime={insight.date}
+        modifiedTime={insight.date}
+        author={insight.author}
+      />
+      <JsonLd
+        schema={[
+          articleSchema(insight),
+          breadcrumbSchema([
+            { label: 'Home', to: '/' },
+            { label: 'Insights', to: '/insights' },
+            { label: insight.title },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={insight.category}
         title={insight.title}

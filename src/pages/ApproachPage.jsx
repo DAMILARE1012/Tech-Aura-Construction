@@ -1,16 +1,22 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { approachPillars } from '@/data/company'
 import { cn } from '@/utils/cn'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function ApproachPage() {
-  usePageTitle('Our Approach')
 
   return (
     <>
+      <Seo
+        title="Our Approach"
+        description="Safety, quality, sustainability, Nigerian content, community and ethics — the six commitments behind every Tech-Aura project, with the numbers behind each one."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'Our Approach' }])}
+      />
       <PageHero
         eyebrow="Our approach"
         title="Six commitments we can show evidence for"

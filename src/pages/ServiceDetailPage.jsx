@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema, serviceSchema } from '@/components/seo'
 import { Check } from 'lucide-react'
 import { Link, useParams } from 'react-router-dom'
 import { PageHero } from '@/components/ui/PageHero'
@@ -11,14 +12,11 @@ import { ProjectCard } from '@/features/projects/components/ProjectCard'
 import { ServiceCard } from '@/features/services/components/ServiceCard'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { useGetServiceBySlugQuery, useGetServicesQuery } from '@/features/services/servicesApi'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function ServiceDetailPage() {
   const { slug } = useParams()
   const { data: service, isLoading, isError, error, refetch } = useGetServiceBySlugQuery(slug)
   const { data: allServices } = useGetServicesQuery()
-
-  usePageTitle(service?.title)
 
   if (isLoading) {
     return (
@@ -47,6 +45,21 @@ export default function ServiceDetailPage() {
 
   return (
     <>
+      <Seo
+        title={service.title}
+        description={service.summary}
+        path={`/services/${service.slug}`}
+      />
+      <JsonLd
+        schema={[
+          serviceSchema(service),
+          breadcrumbSchema([
+            { label: 'Home', to: '/' },
+            { label: 'Services', to: '/services' },
+            { label: service.title },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow="Service"
         title={service.title}

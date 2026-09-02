@@ -1,7 +1,7 @@
+import { Seo } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { COMPANY, CONTACT } from '@/constants/site'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 const CONTENT = {
   privacy: {
@@ -62,10 +62,10 @@ const CONTENT = {
 /** Renders a static legal document. `document` selects which one. */
 export default function LegalPage({ document: documentKey }) {
   const content = CONTENT[documentKey]
-  usePageTitle(content.title)
 
   return (
     <>
+      <Seo title={content.title} description={content.intro} />
       <PageHero
         eyebrow="Legal"
         title={content.title}

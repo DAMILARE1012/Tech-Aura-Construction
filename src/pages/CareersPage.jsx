@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -6,13 +7,18 @@ import { JobsExplorer } from '@/features/careers/components/JobsExplorer'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { benefits } from '@/data/careers'
 import { cultureValues, workforceStats } from '@/data/people'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function CareersPage() {
-  usePageTitle('Careers')
 
   return (
     <>
+      <Seo
+        title="Careers & Jobs in Nigeria"
+        description="Engineering, HSE, quantity surveying and graduate roles across Lagos, Abuja, Port Harcourt, Kano and Ibadan. HMO, COREN sponsorship and site allowances."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'Careers' }])}
+      />
       <PageHero
         eyebrow="Careers"
         title="Build a career on work that stays standing"

@@ -1,18 +1,24 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ContactForm } from '@/features/contact/components/ContactForm'
 import { CONTACT } from '@/constants/site'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 const telHref = (value) => `tel:${value.replace(/\s/g, '')}`
 
 export default function ContactPage() {
-  usePageTitle('Contact Us')
 
   return (
     <>
+      <Seo
+        title="Contact Us — Lagos, Abuja, Port Harcourt & Kano"
+        description="Talk to Tech-Aura about your project. Head office at 14B Adeola Odeku Street, Victoria Island, Lagos. Call +234 1 291 4470 or email info@tech-aura.ng."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'Contact Us' }])}
+      />
       <PageHero
         eyebrow="Contact us"
         title="Let us talk about what you need built"

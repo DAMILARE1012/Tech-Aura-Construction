@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -9,14 +10,19 @@ import { PersonCard } from '@/features/people/components/PersonCard'
 import { useGetLeadershipQuery } from '@/features/people/peopleApi'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { cultureValues, workforceStats } from '@/data/people'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function PeoplePage() {
-  usePageTitle('Our People')
   const { data, isLoading, isError, refetch } = useGetLeadershipQuery()
 
   return (
     <>
+      <Seo
+        title="Our People & Leadership"
+        description="Meet the COREN-registered engineers and executives leading Tech-Aura across Lagos, Abuja, Port Harcourt and Kano — 1,400 people, 92% Nigerian."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'Our People' }])}
+      />
       <PageHero
         eyebrow="Our people"
         title="The engineers behind the work"

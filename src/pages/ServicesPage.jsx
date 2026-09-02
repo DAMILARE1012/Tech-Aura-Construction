@@ -1,3 +1,5 @@
+import { Seo, JsonLd, breadcrumbSchema, collectionPageSchema } from '@/components/seo'
+import { absoluteUrl } from '@/constants/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -7,7 +9,6 @@ import { ErrorState } from '@/components/ui/StateBlocks'
 import { ServiceCard } from '@/features/services/components/ServiceCard'
 import { useGetServicesQuery } from '@/features/services/servicesApi'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 const capabilityStats = [
   { value: '8', label: 'Service lines under one roof' },
@@ -17,11 +18,28 @@ const capabilityStats = [
 ]
 
 export default function ServicesPage() {
-  usePageTitle('Our Services')
   const { data, isLoading, isError, refetch } = useGetServicesQuery()
 
   return (
     <>
+      <Seo
+        title="Construction & Engineering Services in Nigeria"
+        description="Eight service lines: building construction, civil works, oil & gas, power, water, MEP, engineering design and project management — delivered nationwide."
+      />
+      <JsonLd
+        schema={[
+          breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'Services' }]),
+          collectionPageSchema({
+            name: 'Construction and engineering services',
+            description: 'Tech-Aura service lines across Nigeria.',
+            path: '/services',
+            items: (data?.items ?? []).map((service) => ({
+              name: service.title,
+              url: absoluteUrl(`/services/${service.slug}`),
+            })),
+          }),
+        ]}
+      />
       <PageHero
         eyebrow="Our services"
         title="Everything a project needs, under one contract"

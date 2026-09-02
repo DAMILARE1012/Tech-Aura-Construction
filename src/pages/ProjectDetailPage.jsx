@@ -1,3 +1,4 @@
+import { Seo, JsonLd, breadcrumbSchema, projectSchema } from '@/components/seo'
 import { Link, useParams } from 'react-router-dom'
 import { Building2, Calendar, MapPin, Timer, Wallet } from 'lucide-react'
 import { PageHero } from '@/components/ui/PageHero'
@@ -10,7 +11,6 @@ import { ErrorState } from '@/components/ui/StateBlocks'
 import { ProjectCard } from '@/features/projects/components/ProjectCard'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
 import { useGetProjectBySlugQuery } from '@/features/projects/projectsApi'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 const facts = (project) => [
   { icon: Building2, label: 'Client', value: project.client },
@@ -23,8 +23,6 @@ const facts = (project) => [
 export default function ProjectDetailPage() {
   const { slug } = useParams()
   const { data: project, isLoading, isError, error, refetch } = useGetProjectBySlugQuery(slug)
-
-  usePageTitle(project?.title)
 
   if (isLoading) {
     return (
@@ -53,6 +51,22 @@ export default function ProjectDetailPage() {
 
   return (
     <>
+      <Seo
+        title={`${project.title} — ${project.location}`}
+        description={project.summary}
+        image={project.image}
+        path={`/projects/${project.slug}`}
+      />
+      <JsonLd
+        schema={[
+          projectSchema(project),
+          breadcrumbSchema([
+            { label: 'Home', to: '/' },
+            { label: 'Projects', to: '/projects' },
+            { label: project.title },
+          ]),
+        ]}
+      />
       <PageHero
         eyebrow={project.sector}
         title={project.title}

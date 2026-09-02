@@ -1,3 +1,4 @@
+import { Seo } from '@/components/seo'
 import { HeroSection } from '@/features/home/components/HeroSection'
 import { StatsBand } from '@/features/home/components/StatsBand'
 import { ServicesPreview } from '@/features/home/components/ServicesPreview'
@@ -6,13 +7,16 @@ import { ApproachPreview } from '@/features/home/components/ApproachPreview'
 import { SectorsBand } from '@/features/home/components/SectorsBand'
 import { InsightsPreview } from '@/features/home/components/InsightsPreview'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function HomePage() {
-  usePageTitle('Construction & Engineering Services in Lagos, Nigeria')
 
   return (
     <>
+      <Seo
+        title="Construction & Engineering Company in Lagos, Nigeria"
+        description="Tech-Aura builds energy-efficient homes, roads, power, water and oil & gas infrastructure across Nigeria. Lagos-based, COREN registered, 340+ projects delivered since 2009."
+        path="/"
+      />
       <HeroSection />
       <StatsBand />
       <ServicesPreview />

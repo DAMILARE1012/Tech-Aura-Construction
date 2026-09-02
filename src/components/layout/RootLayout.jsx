@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { useApplyTheme } from '@/features/theme/useApplyTheme'
+import { JsonLd, organisationSchema, webSiteSchema } from '@/components/seo'
 import { Footer } from './footer/Footer'
 import { Header } from './header/Header'
 import { ScrollToTop } from './ScrollToTop'
@@ -16,6 +17,7 @@ export function RootLayout() {
   return (
     <div className="flex min-h-screen flex-col">
       <ScrollToTop />
+      <JsonLd schema={[organisationSchema(), webSiteSchema()]} />
       <Header transparent={hasTransparentHeader} />
       <main id="main" className="flex-1">
         <Outlet />

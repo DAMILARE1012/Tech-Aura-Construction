@@ -201,6 +201,56 @@ background so the alternating section rhythm survives.
 
 ---
 
+## SEO
+
+### What is in place
+
+- **Per-page metadata** via `<Seo>` (`src/components/seo/Seo.jsx`). React 19 hoists `<title>`, `<meta>` and `<link>` into `<head>` natively, so there is no head-manager dependency. Every route sets a unique title, description, canonical URL, Open Graph and Twitter card. The 404 sets `noindex`.
+- **Structured data** (`src/components/seo/schema.js`) emitted as a single JSON-LD `@graph` so nodes cross-reference by `@id` instead of repeating the organisation on every page:
+  - `Organization` + `GeneralContractor` with the Lagos address, geo coordinates, opening hours, contact points and all four offices
+  - `WebSite` with `SearchAction` for the sitelinks search box
+  - `BreadcrumbList` on every inner page
+  - `Article` on insights, `Service` on service pages, `CreativeWork` on projects
+  - **`JobPosting` on every vacancy** — this is what makes roles eligible for Google Jobs
+- **`sitemap.xml` and `robots.txt`** generated from the real content data by `scripts/generate-sitemap.mjs`, wired to `prebuild` so they regenerate on every build. Currently 41 URLs. Adding a project or vacancy needs no manual sitemap edit.
+- `lang="en-NG"`, `geo.region`, naira pricing and Nigerian place names throughout — all local-search signals.
+- Descriptive `alt` text on content images; decorative images keep `alt=""`.
+- One `<h1>` per page, ordered headings, semantic landmarks, skip link.
+- `site.webmanifest`, preconnects for fonts, preloaded hero poster, lazy-loaded below-fold images, code-split routes.
+
+### Configure before launch
+
+```
+VITE_SITE_URL=https://www.tech-aura.ng   # canonical origin for meta + schema
+SITE_URL=https://www.tech-aura.ng        # same value for the sitemap script
+```
+
+Both default to `https://www.tech-aura.ng`. **Change them if the domain differs**, or
+every canonical tag and sitemap URL will point at the wrong host.
+
+### Outstanding
+
+**1. Export the Open Graph image.** `public/og-image.svg` is the 1200×630 source.
+Export it to `public/og-image.png` — the meta tags already point there. Social
+platforms do not accept SVG for previews, so until that PNG exists, shared links
+show no image.
+
+**2. Prerendering — the one real structural gap.**
+
+This is a client-rendered SPA, so the served HTML is an empty `<div id="root">`.
+
+- **Google is fine.** It executes JavaScript, so it sees the rendered titles, descriptions and JSON-LD, and the site will index and rank normally.
+- **Social crawlers are not.** Facebook, LinkedIn, WhatsApp, Slack and X do *not* run JavaScript. They only ever read the static tags in `index.html`, so **every shared link currently previews with the same generic homepage title, description and image** regardless of which page was shared.
+
+The static defaults in `index.html` mean previews are never broken — just not
+page-specific. Fixing it properly means prerendering each route to static HTML
+at build time (SSG). That is a contained but real piece of work: a server entry
+using `renderToString`, RTK Query state preloading and dehydration, `hydrateRoot`
+on the client, and a build step that walks the routes. Worth doing before any
+campaign that leans on shared links.
+
+---
+
 ## Content
 
 Copy and data are Nigerian throughout: naira contract values, Lagos/Abuja/Port

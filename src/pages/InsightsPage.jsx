@@ -1,14 +1,20 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { InsightsExplorer } from '@/features/insights/components/InsightsExplorer'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function InsightsPage() {
-  usePageTitle('News & Insights')
 
   return (
     <>
+      <Seo
+        title="News & Engineering Insights"
+        description="Project news and engineering notes from Tech-Aura teams across Nigeria — drainage design, solar hybrid economics, site safety and building on reclaimed land."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'News & Insights' }])}
+      />
       <PageHero
         eyebrow="News & insights"
         title="What our engineers are thinking about"

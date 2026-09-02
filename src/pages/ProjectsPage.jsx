@@ -1,14 +1,20 @@
+import { Seo, JsonLd, breadcrumbSchema } from '@/components/seo'
 import { PageHero } from '@/components/ui/PageHero'
 import { Section } from '@/components/ui/Section'
 import { ProjectsExplorer } from '@/features/projects/components/ProjectsExplorer'
 import { CtaBanner } from '@/features/home/components/CtaBanner'
-import { usePageTitle } from '@/hooks/usePageTitle'
 
 export default function ProjectsPage() {
-  usePageTitle('Our Projects')
 
   return (
     <>
+      <Seo
+        title="Our Projects Across Nigeria"
+        description="340+ delivered projects — commercial towers in Lagos, highways in Ogun, flow stations in Rivers, hospitals in Abuja and water schemes in Kano."
+      />
+      <JsonLd
+        schema={breadcrumbSchema([{ label: 'Home', to: '/' }, { label: 'Projects' }])}
+      />
       <PageHero
         eyebrow="Our projects"
         title="What we have built across Nigeria"
