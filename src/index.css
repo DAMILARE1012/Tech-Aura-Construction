@@ -1,0 +1,258 @@
+@import 'tailwindcss';
+
+/* Theme is driven by a `dark` class on <html>, set by the header toggle and
+   persisted to localStorage — not by prefers-color-scheme alone. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------
+   Tech-Aura design tokens
+
+   Two layers:
+
+   1. PALETTE  — raw hues. Fixed values, never theme-dependent.
+      aura  -> brand green. Deep and engineered rather than minty, so it
+               reads as sustainable engineering instead of generic eco.
+      solar -> warm amber. Secondary accent, rationed, for energy and
+               sunlight cues and in-progress states.
+      ink   -> charcoal scale.
+      sand  -> warm off-whites.
+      danger-> validation errors and failure states only. Kept separate
+               from the brand now that the brand itself is green.
+
+   2. SEMANTIC — what a colour is FOR. These are the ones components use
+      (bg-surface, text-content, border-line, text-brand …). They are
+      redefined wholesale under `.dark` further down, which is what makes
+      the light/dark toggle work without any `dark:` variants in markup.
+
+   Rule of thumb: reach for a semantic token. Use a raw palette token only
+   on a surface that is dark in BOTH themes (the hero, footer, page heroes).
+------------------------------------------------------------------- */
+@theme {
+  --font-display: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* ---- palette ---- */
+  --color-aura-50: #edfaf2;
+  --color-aura-100: #d3f3e0;
+  --color-aura-200: #a9e6c4;
+  --color-aura-300: #72d2a1;
+  --color-aura-400: #3cb87d;
+  --color-aura-500: #1a9b62;
+  --color-aura-600: #0f7a4d;
+  --color-aura-700: #0d6140;
+  --color-aura-800: #0e4e35;
+  --color-aura-900: #0d402d;
+  --color-aura-950: #05231a;
+
+  --color-ink-50: #f4f6f8;
+  --color-ink-100: #e5e9ee;
+  --color-ink-200: #cbd3dc;
+  --color-ink-300: #a3b1c0;
+  --color-ink-400: #74879c;
+  --color-ink-500: #536780;
+  --color-ink-600: #3d4d61;
+  --color-ink-700: #2a3644;
+  --color-ink-800: #171f29;
+  --color-ink-900: #0b0f14;
+  --color-ink-950: #05080b;
+
+  --color-solar-50: #fffaeb;
+  --color-solar-100: #fdf0c8;
+  --color-solar-200: #fbdf8c;
+  --color-solar-300: #f9c750;
+  --color-solar-400: #f7b32b;
+  --color-solar-500: #f0930f;
+  --color-solar-600: #d46f06;
+  --color-solar-700: #b04e09;
+  --color-solar-800: #8f3d0f;
+  --color-solar-900: #763310;
+
+  --color-danger-50: #fef2f2;
+  --color-danger-200: #fecaca;
+  --color-danger-400: #f87171;
+  --color-danger-500: #ef4444;
+  --color-danger-600: #dc2626;
+  --color-danger-700: #b91c1c;
+
+  --color-sand-50: #faf8f5;
+  --color-sand-100: #f4f1ec;
+  --color-sand-200: #e8e2d9;
+
+  /* ---- semantic: light theme ---- */
+  --color-surface: #faf8f5;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #f4f1ec;
+  --color-surface-inverse: #0b0f14;
+  --color-surface-inverse-raised: #171f29;
+
+  --color-content-strong: #0b0f14;
+  --color-content: #2a3644;
+  --color-content-muted: #536780;
+  --color-content-faint: #74879c;
+
+  --color-line: #cbd3dc;
+  --color-line-soft: #e5e9ee;
+  --color-line-strong: #a3b1c0;
+
+  --color-brand: #0f7a4d;
+  --color-brand-emphasis: #0f7a4d;
+  --color-brand-hover: #0d6140;
+  --color-brand-soft: #edfaf2;
+  --color-brand-border: #a9e6c4;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------
+   Dark theme. Only the semantic layer moves.
+
+   `surface-inverse` gets LIGHTER than the page here: in light mode the
+   dark bands recede, in dark mode they need to lift off the background
+   instead, or the alternating section rhythm disappears.
+
+   The brand green also lightens — aura-600 on a near-black surface is
+   only ~2.9:1, so text and icon accents move up the scale to clear AA.
+------------------------------------------------------------------- */
+.dark {
+  --color-surface: #0b0f14;
+  --color-surface-raised: #151c24;
+  --color-surface-sunken: #080c11;
+  --color-surface-inverse: #1a222c;
+  --color-surface-inverse-raised: #232d39;
+
+  --color-content-strong: #f4f6f8;
+  --color-content: #cbd3dc;
+  --color-content-muted: #a3b1c0;
+  --color-content-faint: #74879c;
+
+  --color-line: #2a3644;
+  --color-line-soft: #1f2833;
+  --color-line-strong: #3d4d61;
+
+  --color-brand: #45c489;
+  --color-brand-emphasis: #128a57;
+  --color-brand-hover: #1a9b62;
+  --color-brand-soft: #0e2a1f;
+  --color-brand-border: #16543a;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+
+  /* Tells the browser to render native controls, scrollbars and form
+     widgets in the matching scheme. */
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-surface font-sans text-content antialiased;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-display text-content-strong;
+    text-wrap: balance;
+  }
+
+  /* Consistent, visible focus ring for keyboard users only. */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+
+  ::selection {
+    @apply bg-brand-emphasis text-white;
+  }
+}
+
+@layer components {
+  /* Oversized display type used by the hero and section openers. */
+  .text-display {
+    @apply font-display font-extrabold leading-[0.95] tracking-[-0.02em];
+  }
+
+  /* Small uppercase label that sits above a heading. */
+  .eyebrow {
+    @apply font-display text-xs font-bold uppercase tracking-[0.18em];
+  }
+
+  .prose-body p {
+    @apply mb-5 leading-relaxed text-content;
+  }
+
+  .prose-body h2 {
+    @apply mt-10 mb-4 text-2xl font-bold;
+  }
+
+  .prose-body h3 {
+    @apply mt-8 mb-3 text-xl font-bold;
+  }
+
+  .prose-body ul {
+    @apply mb-5 list-disc space-y-2 pl-5 text-content;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.7s var(--ease-out-expo) both;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out both;
+  }
+
+  /* Hides scrollbars on horizontally scrolling rails. */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Respect users who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

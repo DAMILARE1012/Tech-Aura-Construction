@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Construction site at golden hour with rooftop and ground-mounted solar arrays">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#5f9bb5"/>
+      <stop offset="34%"  stop-color="#9dc4c6"/>
+      <stop offset="62%"  stop-color="#e8cf9a"/>
+      <stop offset="84%"  stop-color="#f5c274"/>
+      <stop offset="100%" stop-color="#f7ab52"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%"   stop-color="#fff3d0" stop-opacity="0.95"/>
+      <stop offset="55%"  stop-color="#f9c750" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#f7b32b" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#4a5a4e"/>
+      <stop offset="100%" stop-color="#26332c"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#3cb87d"/>
+      <stop offset="100%" stop-color="#0f7a4d"/>
+    </linearGradient>
+    <linearGradient id="towerFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#7d93a0"/>
+      <stop offset="100%" stop-color="#a9bbbf"/>
+    </linearGradient>
+    <linearGradient id="towerNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#41535c"/>
+      <stop offset="100%" stop-color="#5d7079"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <ellipse cx="1180" cy="660" rx="330" ry="300" fill="url(#sunGlow)"/>
+  <circle cx="1180" cy="655" r="62" fill="#fff0c4" opacity="0.9"/>
+
+  <!-- Far skyline, hazy -->
+  <g fill="url(#towerFar)" opacity="0.55">
+    <rect x="60"   y="360" width="150" height="330"/>
+    <rect x="1270" y="392" width="200" height="298"/>
+    <rect x="1490" y="452" width="110" height="238"/>
+  </g>
+
+  <!-- Near towers -->
+  <g fill="url(#towerNear)">
+    <rect x="240"  y="268" width="120" height="422"/>
+    <rect x="390"  y="418" width="180" height="272"/>
+    <rect x="1080" y="306" width="160" height="384"/>
+  </g>
+
+  <!-- Lit windows catching the low sun -->
+  <g fill="#ffe6ad" opacity="0.55">
+    <rect x="262" y="300" width="18" height="26"/><rect x="298" y="300" width="18" height="26"/>
+    <rect x="262" y="352" width="18" height="26"/><rect x="322" y="352" width="18" height="26"/>
+    <rect x="298" y="404" width="18" height="26"/><rect x="262" y="456" width="18" height="26"/>
+    <rect x="1104" y="338" width="20" height="28"/><rect x="1150" y="338" width="20" height="28"/>
+    <rect x="1196" y="392" width="20" height="28"/><rect x="1104" y="446" width="20" height="28"/>
+    <rect x="414" y="450" width="20" height="26"/><rect x="470" y="450" width="20" height="26"/>
+  </g>
+
+  <!-- Rooftop solar arrays: the energy-efficiency cue -->
+  <g fill="url(#panel)">
+    <path d="M244 268 L360 268 L360 246 L244 256 Z"/>
+    <path d="M1084 306 L1240 306 L1240 282 L1084 294 Z"/>
+    <path d="M64 360 L210 360 L210 340 L64 350 Z"/>
+  </g>
+  <g stroke="#d9f5e6" stroke-width="1.6" opacity="0.6">
+    <path d="M282 251 V268 M320 249 V268"/>
+    <path d="M1136 289 V306 M1188 286 V306"/>
+    <path d="M112 355 V360 M160 352 V360"/>
+  </g>
+
+  <!-- Tower crane -->
+  <g stroke="#37474f" stroke-width="9" fill="none" stroke-linecap="round">
+    <path d="M640 690 V180 H900"/>
+    <path d="M640 240 L760 180"/>
+    <path d="M900 180 V252"/>
+    <path d="M600 690 H700"/>
+  </g>
+  <g fill="#f0930f">
+    <circle cx="900" cy="258" r="8"/>
+    <circle cx="640" cy="184" r="8"/>
+  </g>
+
+  <rect y="690" width="1600" height="210" fill="url(#ground)"/>
+
+  <!-- Ground-mounted array in the foreground -->
+  <g fill="url(#panel)">
+    <path d="M980 806 L1120 806 L1120 754 L980 768 Z"/>
+    <path d="M1160 806 L1300 806 L1300 754 L1160 768 Z"/>
+  </g>
+  <g stroke="#d9f5e6" stroke-width="2.2" opacity="0.55">
+    <path d="M1026 763 V806 M1073 758 V806 M1206 763 V806 M1253 758 V806"/>
+  </g>
+
+  <!-- Warm light spill across the ground plane -->
+  <ellipse cx="1180" cy="700" rx="420" ry="60" fill="#f7b32b" opacity="0.18"/>
+</svg>
