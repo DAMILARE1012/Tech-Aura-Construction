@@ -87,7 +87,7 @@ export default function JobDetailPage() {
               {job.responsibilities.map((item) => (
                 <li key={item} className="flex gap-3 text-base text-content">
                   <span
-                    className="mt-2.5 size-1.5 shrink-0 rounded-full bg-solar-500"
+                    className="mt-2.5 size-1.5 shrink-0 rounded-full bg-aura-500"
                     aria-hidden="true"
                   />
                   {item}

@@ -113,7 +113,7 @@ export default function ProjectDetailPage() {
             <ul className="mt-5 space-y-3">
               {project.scope.map((item) => (
                 <li key={item} className="flex gap-3 text-sm text-content">
-                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-solar-500" aria-hidden="true" />
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-aura-500" aria-hidden="true" />
                   {item}
                 </li>
               ))}

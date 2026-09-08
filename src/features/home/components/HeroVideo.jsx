@@ -28,7 +28,7 @@ export function HeroVideo({ className }) {
   }, [showVideo])
 
   return (
-    <div className={cn('absolute inset-0 overflow-hidden bg-aura-950', className)} aria-hidden="true">
+    <div className={cn('absolute inset-0 overflow-hidden bg-navy-950', className)} aria-hidden="true">
       <img
         src={HERO_MEDIA.poster}
         alt=""
@@ -61,8 +61,8 @@ export function HeroVideo({ className }) {
       {/* Scrim, kept as light as the type will allow. It is weighted to the
           left, where the headline sits, and fades out across the frame so the
           footage stays visible rather than sitting under a flat black wash. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-aura-950/75 via-aura-950/35 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-aura-950/55 via-transparent to-aura-950/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy-950/80 via-navy-950/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-navy-950/25" />
     </div>
   )
 }

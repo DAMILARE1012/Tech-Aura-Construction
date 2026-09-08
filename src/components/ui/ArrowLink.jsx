@@ -9,7 +9,7 @@ export function ArrowLink({ to, href, label, invert = false, className, children
       <span
         className={cn(
           'flex size-9 shrink-0 items-center justify-center rounded-full transition-transform duration-300 group-hover:rotate-45',
-          invert ? 'bg-solar-500 text-aura-950' : 'bg-brand-emphasis text-white',
+          invert ? 'bg-aura-500 text-white' : 'bg-brand-emphasis text-white',
         )}
         aria-hidden="true"
       >

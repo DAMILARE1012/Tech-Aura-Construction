@@ -9,7 +9,7 @@ export function SectorsBand() {
       <Container size="wide">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div>
-            <p className="eyebrow mb-5 text-accent">Sectors we serve</p>
+            <p className="eyebrow mb-5 text-brand">Sectors we serve</p>
             <ul className="flex flex-wrap gap-x-6 gap-y-3">
               {sectorsServed.map((sector) => (
                 <li
@@ -23,7 +23,7 @@ export function SectorsBand() {
           </div>
 
           <div>
-            <p className="eyebrow mb-5 text-accent">Registered & certified</p>
+            <p className="eyebrow mb-5 text-brand">Registered & certified</p>
             <ul className="grid gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
               {CREDENTIALS.map((credential) => (
                 <li key={credential.id} className="border-l-2 border-brand pl-4">

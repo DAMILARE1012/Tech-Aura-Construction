@@ -30,6 +30,13 @@ PUBLIC = ROOT / 'public'
 NAVY = (2, 32, 75)
 GOLD = (200, 136, 16)
 
+# The site's interface green (aura-900 / aura-950). Icon tiles and the social
+# card use this rather than the logo navy, so what a visitor sees in a tab or
+# a shared link matches the site. The mark itself is never recoloured — the
+# knockout (white ink + gold) simply sits on green instead of navy.
+GREEN = (13, 64, 45)
+GREEN_DEEP = (5, 35, 26)
+
 # Band boundaries measured from the source's row-density profile.
 MARK_BOX = (304, 134, 904, 776)      # building + arc + TA monogram
 FULL_BOX = (150, 128, 1138, 1046)    # entire lockup including the tagline
@@ -136,7 +143,7 @@ def main():
     for px_size, name, radius in [(32, 'favicon-32.png', 6), (192, 'favicon-192.png', 34),
                                   (180, 'apple-touch-icon.png', 0)]:
         tile = Image.new('RGBA', (px_size, px_size), (0, 0, 0, 0))
-        plate = Image.new('RGBA', (px_size, px_size), NAVY + (255,))
+        plate = Image.new('RGBA', (px_size, px_size), GREEN + (255,))
         if radius:
             mask = Image.new('L', (px_size * 4, px_size * 4), 0)
             ImageDraw.Draw(mask).rounded_rectangle(
@@ -151,11 +158,11 @@ def main():
     # --- Open Graph card ------------------------------------------------
     print('\nsocial card:')
     W, H = 1200, 630
-    card = Image.new('RGB', (W, H), NAVY)
+    card = Image.new('RGB', (W, H), GREEN)
     draw = ImageDraw.Draw(card)
 
-    # Gold sweep echoing the arc in the logo.
-    draw.polygon([(0, H), (W, H - 210), (W, H), (0, H)], fill=(6, 42, 92))
+    # Sweep echoing the arc in the logo.
+    draw.polygon([(0, H), (W, H - 210), (W, H), (0, H)], fill=GREEN_DEEP)
     draw.rectangle([(0, H - 12), (W, H)], fill=GOLD)
 
     logo = contain(knockout(full), 470, 300)
@@ -169,8 +176,8 @@ def main():
     draw.text((x, 214), 'Construction &', font=title, fill=(255, 255, 255))
     draw.text((x, 268), 'Engineering Services', font=title, fill=(255, 255, 255))
     draw.rectangle([(x, 338), (x + 78, 343)], fill=GOLD)
-    draw.text((x, 372), 'Energy-efficient buildings, roads,', font=body, fill=(196, 210, 232))
-    draw.text((x, 406), 'power and water infrastructure', font=body, fill=(196, 210, 232))
+    draw.text((x, 372), 'Energy-efficient buildings, roads,', font=body, fill=(169, 230, 196))
+    draw.text((x, 406), 'power and water infrastructure', font=body, fill=(169, 230, 196))
     draw.text((x, 470), 'LAGOS, NIGERIA', font=small, fill=(255, 255, 255))
     draw.text((x + 210, 470), 'SINCE 2009', font=small, fill=GOLD)
 

@@ -10,10 +10,13 @@
    Two layers:
 
    1. PALETTE  — raw hues. Fixed values, never theme-dependent.
-      aura  -> brand navy (#02204B), sampled from the supplied logo.
-               Carries structure: buttons, dark bands, links, focus.
-      solar -> brand gold (#C88810), also sampled from the logo. The
-               accent the eye lands on: eyebrows, arrows, key figures.
+      aura  -> interface green. The action colour: buttons, links,
+               eyebrows, focus. Carries the energy-efficiency story.
+      navy  -> #02204B, sampled from the logo. Used for dark bands, the
+               hero and the footer, so the navy/gold mark sits on its own
+               ground rather than clashing with the green.
+      solar -> #C88810, the logo gold. Rationed to key figures, so the
+               mark's accent is echoed without competing with the green.
       ink   -> neutral charcoal scale for body text.
       sand  -> warm off-whites.
       danger-> validation errors and failure states only. Kept separate
@@ -32,17 +35,32 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* ---- palette ---- */
-  --color-aura-50: #eff4fb;
-  --color-aura-100: #dae6f5;
-  --color-aura-200: #b6cbe9;
-  --color-aura-300: #86a6d5;
-  --color-aura-400: #547dbb;
-  --color-aura-500: #3160a0;
-  --color-aura-600: #1f4a85;
-  --color-aura-700: #163a6b;
-  --color-aura-800: #0e2d55;
-  --color-aura-900: #02204b;
-  --color-aura-950: #01152f;
+  --color-aura-50: #edfaf2;
+  --color-aura-100: #d3f3e0;
+  --color-aura-200: #a9e6c4;
+  --color-aura-300: #72d2a1;
+  --color-aura-400: #3cb87d;
+  --color-aura-500: #1a9b62;
+  --color-aura-600: #0f7a4d;
+  --color-aura-700: #0d6140;
+  --color-aura-800: #0e4e35;
+  --color-aura-900: #0d402d;
+  --color-aura-950: #05231a;
+
+  /* Straight from the logo. Not the interface accent — this is the colour the
+     dark bands, hero and footer use, so the navy/gold mark always sits on its
+     own ground instead of fighting the green. */
+  --color-navy-50: #eff4fb;
+  --color-navy-100: #dae6f5;
+  --color-navy-200: #b6cbe9;
+  --color-navy-300: #86a6d5;
+  --color-navy-400: #547dbb;
+  --color-navy-500: #3160a0;
+  --color-navy-600: #1f4a85;
+  --color-navy-700: #163a6b;
+  --color-navy-800: #0e2d55;
+  --color-navy-900: #02204b;
+  --color-navy-950: #01152f;
 
   --color-ink-50: #f4f6f8;
   --color-ink-100: #e5e9ee;
@@ -94,11 +112,11 @@
   --color-line-soft: #e5e9ee;
   --color-line-strong: #a3b1c0;
 
-  --color-brand: #1f4a85;
-  --color-brand-emphasis: #02204b;
-  --color-brand-hover: #0e2d55;
-  --color-brand-soft: #eff4fb;
-  --color-brand-border: #b6cbe9;
+  --color-brand: #0f7a4d;
+  --color-brand-emphasis: #0f7a4d;
+  --color-brand-hover: #0d6140;
+  --color-brand-soft: #edfaf2;
+  --color-brand-border: #a9e6c4;
 
   /* Gold accent. `accent` is darkened to clear AA as text on white (5.2:1);
      `accent-strong` is the logo gold itself, for fills and dark surfaces. */
@@ -116,8 +134,8 @@
    dark bands recede, in dark mode they need to lift off the background
    instead, or the alternating section rhythm disappears.
 
-   The brand navy also lightens — #02204B on a near-black surface is
-   invisible, so text and icon accents move up the scale to clear AA.
+   The brand green also lightens — aura-600 on a near-black surface is
+   only ~2.9:1, so text and icon accents move up the scale to clear AA.
 ------------------------------------------------------------------- */
 .dark {
   --color-surface: #070d16;
@@ -135,11 +153,11 @@
   --color-line-soft: #16202f;
   --color-line-strong: #35486a;
 
-  --color-brand: #86a6d5;
-  --color-brand-emphasis: #1f4a85;
-  --color-brand-hover: #3160a0;
-  --color-brand-soft: #0e2038;
-  --color-brand-border: #1f4a85;
+  --color-brand: #45c489;
+  --color-brand-emphasis: #128a57;
+  --color-brand-hover: #1a9b62;
+  --color-brand-soft: #0e2a1f;
+  --color-brand-border: #16543a;
 
   --color-accent: #e0a93c;
   --color-accent-strong: #e9bd54;

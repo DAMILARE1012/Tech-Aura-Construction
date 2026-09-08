@@ -91,7 +91,7 @@ export function MobileNav() {
   return (
     <div
       id="mobile-nav"
-      className="animate-fade-in fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-aura-900 px-5 pb-12 sm:px-8 lg:hidden"
+      className="animate-fade-in fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-navy-900 px-5 pb-12 sm:px-8 lg:hidden"
     >
       <nav aria-label="Mobile">
         <ul className="border-t border-white/10">

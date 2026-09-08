@@ -17,8 +17,8 @@
       <stop offset="100%" stop-color="#01152f"/>
     </linearGradient>
     <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%"   stop-color="#e0a93c"/>
-      <stop offset="100%" stop-color="#ac7210"/>
+      <stop offset="0%"   stop-color="#3cb87d"/>
+      <stop offset="100%" stop-color="#0d6140"/>
     </linearGradient>
     <linearGradient id="towerFar" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#5d7ba6"/>
@@ -64,7 +64,7 @@
     <path d="M1084 306 L1240 306 L1240 282 L1084 294 Z"/>
     <path d="M64 360 L210 360 L210 340 L64 350 Z"/>
   </g>
-  <g stroke="#fdf7ea" stroke-width="1.6" opacity="0.55">
+  <g stroke="#d3f3e0" stroke-width="1.6" opacity="0.6">
     <path d="M282 251 V268 M320 249 V268"/>
     <path d="M1136 289 V306 M1188 286 V306"/>
     <path d="M112 355 V360 M160 352 V360"/>
@@ -89,7 +89,7 @@
     <path d="M980 806 L1120 806 L1120 754 L980 768 Z"/>
     <path d="M1160 806 L1300 806 L1300 754 L1160 768 Z"/>
   </g>
-  <g stroke="#fdf7ea" stroke-width="2.2" opacity="0.5">
+  <g stroke="#d3f3e0" stroke-width="2.2" opacity="0.55">
     <path d="M1026 763 V806 M1073 758 V806 M1206 763 V806 M1253 758 V806"/>
   </g>
 

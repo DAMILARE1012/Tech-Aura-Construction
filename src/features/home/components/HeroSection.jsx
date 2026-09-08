@@ -18,7 +18,7 @@ export function HeroSection() {
 
       <Container size="wide" className="relative">
         <div className="max-w-4xl">
-          <p className="eyebrow animate-fade-up mb-6 text-solar-400">
+          <p className="eyebrow animate-fade-up mb-6 text-aura-300">
             Lagos, Nigeria · Since 2009
           </p>
 

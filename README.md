@@ -136,24 +136,34 @@ No component or endpoint changes are needed. The mock implements:
 
 Tokens live in `src/index.css` and come in **two layers**.
 
-**Palette** — raw hues sampled directly from the supplied logo, never theme-dependent:
+**Palette** — raw hues, never theme-dependent:
 
-| Token    | Value     | Role                                                              |
-| -------- | --------- | ----------------------------------------------------------------- |
-| `aura`   | `#02204B` | Brand navy from the logo. Structure: buttons, dark bands, links    |
-| `solar`  | `#C88810` | Brand gold from the logo. The accent the eye lands on              |
-| `ink`    | —         | Neutral charcoal scale for body text                               |
-| `sand`   | —         | Warm off-whites                                                    |
-| `danger` | —         | Validation errors and failure states only                          |
+| Token   | Value     | Role                                                             |
+| ------- | --------- | ---------------------------------------------------------------- |
+| `aura`  | `#0F7A4D` | Interface green. Buttons, links, eyebrows, focus                  |
+| `navy`  | `#02204B` | From the logo. Dark bands, hero, footer, page heroes              |
+| `solar` | `#C88810` | From the logo. Rationed accent — key figures, badges, the wordmark |
+| `ink`   | —         | Neutral charcoal scale for body text                              |
+| `sand`  | —         | Warm off-whites                                                   |
+| `danger`| —         | Validation errors and failure states only                         |
 
-The navy/gold split mirrors the logo's own logic: navy carries the structure,
-gold is the highlight (the arc, the roof, "AURA"). So navy drives buttons, dark
-bands and links, while gold drives eyebrows, arrows and key figures.
+### Why three brand colours
 
-`accent` (`#8A5A0E`) is a deliberately darkened gold — the logo gold at
-`#C88810` only reaches 3.0:1 on white and fails AA as text. Use `accent` for
-gold *text* on light surfaces, `accent-strong` / `solar-500` for gold *fills*,
-and `solar-400` for gold on dark surfaces (7.6:1 on navy).
+The logo is navy and gold; the site theme is green, for the energy-efficiency
+and nature association. Rather than let those fight, each has a defined job:
+
+- **Green** is the *interface* colour — every button, link, eyebrow and focus ring. It is what the visitor reads as "the theme".
+- **Navy** owns the surfaces that are dark in both themes: the hero, page heroes, dark bands and footer. That means **the navy/gold mark always sits on its own ground** instead of clashing with green.
+- **Gold** is deliberately rationed — the logo wordmark, stat figures, "Ongoing" badges, the 404 numeral. Enough to echo the mark, never enough to compete.
+
+The mark itself is never recoloured. On light surfaces it appears in its true
+navy and gold; on dark surfaces the knockout (white ink, gold preserved) is used.
+Icon tiles and the social card use green, so a browser tab or a shared link
+matches the site rather than the logo.
+
+`accent` (`#8A5A0E`) is a darkened gold for *text* on light surfaces — the logo
+gold at `#C88810` only reaches 3.0:1 on white and fails AA. Use `accent-strong`
+/ `solar-500` for gold fills and `solar-400` on dark surfaces.
 
 **Semantic** — what a colour is *for*. These are the ones components use:
 

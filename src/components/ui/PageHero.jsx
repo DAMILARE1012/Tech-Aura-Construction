@@ -8,7 +8,7 @@ import { Container } from './Container'
  */
 export function PageHero({ eyebrow, title, intro, image, breadcrumbs, actions, children }) {
   return (
-    <header className={cn('relative overflow-hidden bg-aura-900 pt-32 pb-16 md:pt-44 md:pb-24')}>
+    <header className={cn('relative overflow-hidden bg-navy-900 pt-32 pb-16 md:pt-44 md:pb-24')}>
       {image && (
         <>
           <img
@@ -27,7 +27,7 @@ export function PageHero({ eyebrow, title, intro, image, breadcrumbs, actions, c
 
       <Container className="relative">
         {breadcrumbs && <Breadcrumbs trail={breadcrumbs} invert className="mb-6" />}
-        {eyebrow && <p className="eyebrow mb-4 text-solar-400">{eyebrow}</p>}
+        {eyebrow && <p className="eyebrow mb-4 text-aura-400">{eyebrow}</p>}
         <h1 className="text-display max-w-4xl text-4xl text-white sm:text-5xl lg:text-6xl">
           {title}
         </h1>

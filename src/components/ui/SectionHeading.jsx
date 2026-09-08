@@ -24,7 +24,7 @@ export function SectionHeading({
     >
       <div className={cn(align === 'between' && 'max-w-2xl')}>
         {eyebrow && (
-          <p className={cn('eyebrow mb-4', invert ? 'text-solar-400' : 'text-accent')}>
+          <p className={cn('eyebrow mb-4', invert ? 'text-aura-400' : 'text-brand')}>
             {eyebrow}
           </p>
         )}
