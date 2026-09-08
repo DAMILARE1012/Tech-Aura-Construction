@@ -78,7 +78,7 @@ function ColumnsPanel({ mega, onNavigate }) {
 
       {mega.feature && (
         <div className="hidden py-10 lg:block">
-          <p className="eyebrow text-brand">{mega.feature.eyebrow}</p>
+          <p className="eyebrow text-accent">{mega.feature.eyebrow}</p>
           <img
             src={mega.feature.image}
             alt=""

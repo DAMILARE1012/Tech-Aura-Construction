@@ -30,7 +30,7 @@ export default function AboutPage() {
       <Section tone="white" spacing="lg" containerSize="wide">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div>
-            <p className="eyebrow mb-5 text-brand">Who we are</p>
+            <p className="eyebrow mb-5 text-accent">Who we are</p>
             <h2 className="text-display text-3xl sm:text-4xl">
               We took on the jobs other contractors would not.
             </h2>

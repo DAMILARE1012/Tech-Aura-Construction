@@ -32,7 +32,7 @@ export function ApproachPreview() {
         <ul className="grid gap-px bg-white/10 sm:grid-cols-2">
           {approachPillars.slice(0, 4).map((pillar) => (
             <li key={pillar.id} className="bg-surface-inverse p-7 md:p-8">
-              <p className="eyebrow text-aura-500">{pillar.title}</p>
+              <p className="eyebrow text-solar-400">{pillar.title}</p>
               <h3 className="mt-3 font-display text-lg font-bold text-white">{pillar.headline}</h3>
               <p className="mt-3 text-sm leading-relaxed text-content-faint">{pillar.body}</p>
               <p className="mt-5 font-display text-2xl font-extrabold text-white">

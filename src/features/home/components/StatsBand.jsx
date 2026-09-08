@@ -13,7 +13,7 @@ export function StatsBand() {
               <dd>
                 <span className="text-display block text-4xl text-white lg:text-5xl">
                   {stat.value}
-                  <span className="text-aura-500">{stat.suffix}</span>
+                  <span className="text-solar-400">{stat.suffix}</span>
                 </span>
                 <span className="mt-2 block text-sm text-content-faint">{stat.label}</span>
               </dd>

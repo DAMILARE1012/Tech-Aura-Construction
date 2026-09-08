@@ -136,15 +136,24 @@ No component or endpoint changes are needed. The mock implements:
 
 Tokens live in `src/index.css` and come in **two layers**.
 
-**Palette** — raw hues, never theme-dependent:
+**Palette** — raw hues sampled directly from the supplied logo, never theme-dependent:
 
-| Token    | Role                                                                   |
-| -------- | ---------------------------------------------------------------------- |
-| `aura`   | Brand green — deep and engineered rather than minty                     |
-| `solar`  | Warm amber — rationed, for energy/sunlight cues and in-progress states  |
-| `ink`    | Charcoal scale                                                          |
-| `sand`   | Warm off-whites                                                         |
-| `danger` | Validation errors and failure states only                               |
+| Token    | Value     | Role                                                              |
+| -------- | --------- | ----------------------------------------------------------------- |
+| `aura`   | `#02204B` | Brand navy from the logo. Structure: buttons, dark bands, links    |
+| `solar`  | `#C88810` | Brand gold from the logo. The accent the eye lands on              |
+| `ink`    | —         | Neutral charcoal scale for body text                               |
+| `sand`   | —         | Warm off-whites                                                    |
+| `danger` | —         | Validation errors and failure states only                          |
+
+The navy/gold split mirrors the logo's own logic: navy carries the structure,
+gold is the highlight (the arc, the roof, "AURA"). So navy drives buttons, dark
+bands and links, while gold drives eyebrows, arrows and key figures.
+
+`accent` (`#8A5A0E`) is a deliberately darkened gold — the logo gold at
+`#C88810` only reaches 3.0:1 on white and fails AA as text. Use `accent` for
+gold *text* on light surfaces, `accent-strong` / `solar-500` for gold *fills*,
+and `solar-400` for gold on dark surfaces (7.6:1 on navy).
 
 **Semantic** — what a colour is *for*. These are the ones components use:
 
@@ -163,6 +172,34 @@ Tokens live in `src/index.css` and come in **two layers**.
 > **Reach for a semantic token.** Use a raw palette token only on a surface that
 > is dark in *both* themes — the homepage hero, the footer, page heroes, and
 > `bg-white/10` hairlines over photography.
+
+### Brand assets
+
+The supplied logo lives at `brand/Tech_AURA_Logo.png`, deliberately **outside
+`public/`** so the 888KB original is never deployed. Everything the site uses is
+derived from it:
+
+```bash
+pip install Pillow
+python scripts/generate-brand-assets.py
+```
+
+That produces, into `public/`:
+
+| Asset | Use |
+| --- | --- |
+| `media/logo-mark.png` | Header/footer mark, light surfaces (26KB) |
+| `media/logo-mark-light.png` | Knockout mark for dark surfaces (14KB) |
+| `media/logo-full.png` | Full lockup, `Organization.logo` in schema |
+| `media/logo-full-light.png` | Full lockup knockout |
+| `favicon-32/192.png`, `apple-touch-icon.png` | Icons, mark on a navy tile |
+| `og-image.png` | 1200×630 social card |
+
+Two things the source artwork does not ship with, and which the script adds:
+a **transparent background** (it is supplied on solid white, which would show as
+a white plate on the navy header) and a **knockout** variant where the navy ink
+becomes white and the gold is preserved. Assets are emitted at display
+resolution, not source resolution.
 
 Type is **Archivo** for display and **Inter** for body copy.
 

@@ -34,9 +34,9 @@ export const organisationSchema = () => ({
   url: `${SITE_URL}/`,
   logo: {
     '@type': 'ImageObject',
-    url: `${SITE_URL}/og-image.png`,
-    width: 1200,
-    height: 630,
+    url: `${SITE_URL}/media/logo-full.png`,
+    width: 981,
+    height: 916,
   },
   image: DEFAULT_OG_IMAGE,
   description: DEFAULT_DESCRIPTION,

@@ -37,7 +37,7 @@ export function ErrorScreen({
       aria-live="assertive"
       className={cn(
         isPage
-          ? 'flex min-h-screen items-center bg-ink-900 py-24'
+          ? 'flex min-h-screen items-center bg-aura-900 py-24'
           : 'bg-surface py-24 md:py-32',
       )}
     >

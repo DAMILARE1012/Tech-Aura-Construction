@@ -24,7 +24,7 @@ export function StatGrid({ stats = [], invert = false, columns = 4, className })
               )}
             >
               {stat.value}
-              {stat.suffix && <span className="text-aura-500">{stat.suffix}</span>}
+              {stat.suffix && <span className="text-solar-400">{stat.suffix}</span>}
             </span>
             <span
               className={cn(

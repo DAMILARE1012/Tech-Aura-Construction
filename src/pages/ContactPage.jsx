@@ -129,7 +129,7 @@ export default function ContactPage() {
         <div className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
           {CONTACT.offices.map((office) => (
             <div key={office.id} className="bg-surface p-7">
-              <p className="eyebrow text-brand">{office.label}</p>
+              <p className="eyebrow text-accent">{office.label}</p>
               <h3 className="mt-2 font-display text-xl font-bold text-content-strong">{office.city}</h3>
               <address className="mt-3 text-sm leading-relaxed text-content not-italic">
                 {office.street}

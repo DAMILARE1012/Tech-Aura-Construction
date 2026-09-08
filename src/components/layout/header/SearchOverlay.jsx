@@ -66,7 +66,7 @@ export function SearchOverlay() {
   }, [])
 
   return (
-    <div className="animate-fade-in fixed inset-0 z-50 bg-ink-950/95 backdrop-blur-sm">
+    <div className="animate-fade-in fixed inset-0 z-50 bg-aura-950/95 backdrop-blur-sm">
       <div className="mx-auto w-full max-w-3xl px-5 pt-28 sm:px-8">
         <div className="flex items-center gap-4 border-b-2 border-aura-400 pb-4">
           <Search className="size-6 shrink-0 text-aura-500" aria-hidden="true" />
@@ -108,7 +108,7 @@ export function SearchOverlay() {
                   onClick={() => dispatch(closeSearch())}
                   className="group block py-4 transition-colors hover:bg-white/5"
                 >
-                  <span className="eyebrow text-aura-500">{result.group}</span>
+                  <span className="eyebrow text-solar-400">{result.group}</span>
                   <span className="mt-1.5 block font-display text-base font-bold text-white">
                     {result.label}
                   </span>

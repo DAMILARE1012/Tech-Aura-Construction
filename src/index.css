@@ -10,14 +10,14 @@
    Two layers:
 
    1. PALETTE  — raw hues. Fixed values, never theme-dependent.
-      aura  -> brand green. Deep and engineered rather than minty, so it
-               reads as sustainable engineering instead of generic eco.
-      solar -> warm amber. Secondary accent, rationed, for energy and
-               sunlight cues and in-progress states.
-      ink   -> charcoal scale.
+      aura  -> brand navy (#02204B), sampled from the supplied logo.
+               Carries structure: buttons, dark bands, links, focus.
+      solar -> brand gold (#C88810), also sampled from the logo. The
+               accent the eye lands on: eyebrows, arrows, key figures.
+      ink   -> neutral charcoal scale for body text.
       sand  -> warm off-whites.
       danger-> validation errors and failure states only. Kept separate
-               from the brand now that the brand itself is green.
+               from the brand so an error never reads as an accent.
 
    2. SEMANTIC — what a colour is FOR. These are the ones components use
       (bg-surface, text-content, border-line, text-brand …). They are
@@ -32,17 +32,17 @@
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
 
   /* ---- palette ---- */
-  --color-aura-50: #edfaf2;
-  --color-aura-100: #d3f3e0;
-  --color-aura-200: #a9e6c4;
-  --color-aura-300: #72d2a1;
-  --color-aura-400: #3cb87d;
-  --color-aura-500: #1a9b62;
-  --color-aura-600: #0f7a4d;
-  --color-aura-700: #0d6140;
-  --color-aura-800: #0e4e35;
-  --color-aura-900: #0d402d;
-  --color-aura-950: #05231a;
+  --color-aura-50: #eff4fb;
+  --color-aura-100: #dae6f5;
+  --color-aura-200: #b6cbe9;
+  --color-aura-300: #86a6d5;
+  --color-aura-400: #547dbb;
+  --color-aura-500: #3160a0;
+  --color-aura-600: #1f4a85;
+  --color-aura-700: #163a6b;
+  --color-aura-800: #0e2d55;
+  --color-aura-900: #02204b;
+  --color-aura-950: #01152f;
 
   --color-ink-50: #f4f6f8;
   --color-ink-100: #e5e9ee;
@@ -56,16 +56,16 @@
   --color-ink-900: #0b0f14;
   --color-ink-950: #05080b;
 
-  --color-solar-50: #fffaeb;
-  --color-solar-100: #fdf0c8;
-  --color-solar-200: #fbdf8c;
-  --color-solar-300: #f9c750;
-  --color-solar-400: #f7b32b;
-  --color-solar-500: #f0930f;
-  --color-solar-600: #d46f06;
-  --color-solar-700: #b04e09;
-  --color-solar-800: #8f3d0f;
-  --color-solar-900: #763310;
+  --color-solar-50: #fdf7ea;
+  --color-solar-100: #f9ecc9;
+  --color-solar-200: #f2d68f;
+  --color-solar-300: #e9bd54;
+  --color-solar-400: #e0a93c;
+  --color-solar-500: #c88810;
+  --color-solar-600: #ac7210;
+  --color-solar-700: #8a5a0e;
+  --color-solar-800: #6f490f;
+  --color-solar-900: #5c3d10;
 
   --color-danger-50: #fef2f2;
   --color-danger-200: #fecaca;
@@ -82,8 +82,8 @@
   --color-surface: #faf8f5;
   --color-surface-raised: #ffffff;
   --color-surface-sunken: #f4f1ec;
-  --color-surface-inverse: #0b0f14;
-  --color-surface-inverse-raised: #171f29;
+  --color-surface-inverse: #02204b;
+  --color-surface-inverse-raised: #0e2d55;
 
   --color-content-strong: #0b0f14;
   --color-content: #2a3644;
@@ -94,11 +94,17 @@
   --color-line-soft: #e5e9ee;
   --color-line-strong: #a3b1c0;
 
-  --color-brand: #0f7a4d;
-  --color-brand-emphasis: #0f7a4d;
-  --color-brand-hover: #0d6140;
-  --color-brand-soft: #edfaf2;
-  --color-brand-border: #a9e6c4;
+  --color-brand: #1f4a85;
+  --color-brand-emphasis: #02204b;
+  --color-brand-hover: #0e2d55;
+  --color-brand-soft: #eff4fb;
+  --color-brand-border: #b6cbe9;
+
+  /* Gold accent. `accent` is darkened to clear AA as text on white (5.2:1);
+     `accent-strong` is the logo gold itself, for fills and dark surfaces. */
+  --color-accent: #8a5a0e;
+  --color-accent-strong: #c88810;
+  --color-accent-soft: #fdf7ea;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -110,30 +116,34 @@
    dark bands recede, in dark mode they need to lift off the background
    instead, or the alternating section rhythm disappears.
 
-   The brand green also lightens — aura-600 on a near-black surface is
-   only ~2.9:1, so text and icon accents move up the scale to clear AA.
+   The brand navy also lightens — #02204B on a near-black surface is
+   invisible, so text and icon accents move up the scale to clear AA.
 ------------------------------------------------------------------- */
 .dark {
-  --color-surface: #0b0f14;
-  --color-surface-raised: #151c24;
-  --color-surface-sunken: #080c11;
-  --color-surface-inverse: #1a222c;
-  --color-surface-inverse-raised: #232d39;
+  --color-surface: #070d16;
+  --color-surface-raised: #101a28;
+  --color-surface-sunken: #04080f;
+  --color-surface-inverse: #12294a;
+  --color-surface-inverse-raised: #1b3860;
 
   --color-content-strong: #f4f6f8;
   --color-content: #cbd3dc;
   --color-content-muted: #a3b1c0;
   --color-content-faint: #74879c;
 
-  --color-line: #2a3644;
-  --color-line-soft: #1f2833;
-  --color-line-strong: #3d4d61;
+  --color-line: #22304a;
+  --color-line-soft: #16202f;
+  --color-line-strong: #35486a;
 
-  --color-brand: #45c489;
-  --color-brand-emphasis: #128a57;
-  --color-brand-hover: #1a9b62;
-  --color-brand-soft: #0e2a1f;
-  --color-brand-border: #16543a;
+  --color-brand: #86a6d5;
+  --color-brand-emphasis: #1f4a85;
+  --color-brand-hover: #3160a0;
+  --color-brand-soft: #0e2038;
+  --color-brand-border: #1f4a85;
+
+  --color-accent: #e0a93c;
+  --color-accent-strong: #e9bd54;
+  --color-accent-soft: #241c07;
 }
 
 @layer base {

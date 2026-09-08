@@ -28,7 +28,7 @@ function NavGroup({ item, onNavigate }) {
 
   if (!children.length) {
     return (
-      <li className="border-b border-ink-800">
+      <li className="border-b border-white/10">
         <Link
           to={item.to}
           onClick={onNavigate}
@@ -41,7 +41,7 @@ function NavGroup({ item, onNavigate }) {
   }
 
   return (
-    <li className="border-b border-ink-800">
+    <li className="border-b border-white/10">
       <button
         type="button"
         onClick={() => setExpanded((value) => !value)}
@@ -91,15 +91,15 @@ export function MobileNav() {
   return (
     <div
       id="mobile-nav"
-      className="animate-fade-in fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-ink-900 px-5 pb-12 sm:px-8 lg:hidden"
+      className="animate-fade-in fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto bg-aura-900 px-5 pb-12 sm:px-8 lg:hidden"
     >
       <nav aria-label="Mobile">
-        <ul className="border-t border-ink-800">
+        <ul className="border-t border-white/10">
           {primaryNav.map((item) => (
             <NavGroup key={item.id} item={item} onNavigate={handleNavigate} />
           ))}
           {utilityNav.map((item) => (
-            <li key={item.id} className="border-b border-ink-800">
+            <li key={item.id} className="border-b border-white/10">
               <Link
                 to={item.to}
                 onClick={handleNavigate}
@@ -116,7 +116,7 @@ export function MobileNav() {
         Start a project
       </Button>
 
-      <div className="mt-8 flex items-center justify-between border-t border-ink-800 pt-6">
+      <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6">
         <span className="font-display text-xs font-bold tracking-[0.12em] text-ink-400 uppercase">
           Appearance
         </span>

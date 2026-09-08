@@ -11,9 +11,9 @@ export default function NotFoundPage() {
         description="This page could not be found. Browse Tech-Aura projects, services and careers instead."
         noIndex
       />
-      <section className="bg-ink-900 py-32 md:py-44">
+      <section className="bg-aura-900 py-32 md:py-44">
       <Container className="text-center">
-        <p className="text-display text-7xl text-aura-500 md:text-9xl">404</p>
+        <p className="text-display text-7xl text-solar-400 md:text-9xl">404</p>
         <h1 className="text-display mt-6 text-3xl text-white md:text-5xl">
           This page is not on our plans
         </h1>
