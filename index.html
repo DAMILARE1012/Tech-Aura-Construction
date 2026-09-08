@@ -63,14 +63,13 @@
     <title>Tech-Aura Construction and Engineering Services | Lagos, Nigeria</title>
     <script>
       // Runs before first paint so the page never flashes the wrong theme.
-      // Mirrors getInitialTheme() in src/features/theme/themeSlice.js.
+      // Mirrors getInitialTheme() in src/features/theme/themeSlice.js:
+      // an explicit stored choice wins, otherwise default to light.
       (function () {
         try {
-          var stored = localStorage.getItem('tech-aura-theme')
-          var dark =
-            stored === 'dark' ||
-            (stored !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches)
-          if (dark) document.documentElement.classList.add('dark')
+          if (localStorage.getItem('tech-aura-theme') === 'dark') {
+            document.documentElement.classList.add('dark')
+          }
         } catch (e) {}
       })()
     </script>
