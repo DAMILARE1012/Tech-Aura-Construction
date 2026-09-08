@@ -22,13 +22,13 @@ export function HeroSection() {
             Lagos, Nigeria · Since 2009
           </p>
 
-          <h1 className="text-display animate-fade-up text-5xl text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)] sm:text-6xl lg:text-7xl xl:text-8xl">
+          <h1 className="text-display animate-fade-up text-5xl text-white drop-shadow-[0_2px_22px_rgba(1,21,47,0.8)] sm:text-6xl lg:text-7xl xl:text-8xl">
             We Build What
             <br />
             Nigeria Needs Next
           </h1>
 
-          <p className="animate-fade-up mt-8 max-w-2xl text-base leading-relaxed text-white/85 drop-shadow-[0_1px_12px_rgba(0,0,0,0.5)] sm:text-lg lg:text-xl">
+          <p className="animate-fade-up mt-8 max-w-2xl text-base leading-relaxed text-white drop-shadow-[0_1px_14px_rgba(1,21,47,0.85)] sm:text-lg lg:text-xl">
             Energy-efficient homes, roads that hold through the rains, and the power and water
             infrastructure Nigerian communities and industries depend on.
           </p>
@@ -38,7 +38,7 @@ export function HeroSection() {
             <ArrowLink to="/contact" label="Start a conversation" invert />
           </div>
 
-          <dl className="animate-fade-up mt-14 flex flex-wrap gap-x-12 gap-y-6 border-t border-white/20 pt-8">
+          <dl className="animate-fade-up mt-14 flex flex-wrap gap-x-12 gap-y-6 border-t border-white/30 pt-8">
             {HERO_FACTS.map((fact) => (
               <div key={fact.label}>
                 <dt className="sr-only">{fact.label}</dt>
@@ -46,7 +46,7 @@ export function HeroSection() {
                   <span className="text-display block text-3xl text-white lg:text-4xl">
                     {fact.value}
                   </span>
-                  <span className="mt-1.5 block text-xs font-medium text-white/70">
+                  <span className="mt-1.5 block text-xs font-medium text-white/90">
                     {fact.label}
                   </span>
                 </dd>
@@ -59,7 +59,7 @@ export function HeroSection() {
       <a
         href="#what-we-do"
         aria-label="Scroll to content"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/70 transition-colors hover:text-white md:flex"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/85 transition-colors hover:text-white md:flex"
       >
         <span className="font-display text-[10px] font-bold tracking-[0.2em] uppercase">Scroll</span>
         <ChevronDown className="size-4 animate-bounce" aria-hidden="true" />

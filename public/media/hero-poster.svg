@@ -1,41 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Construction site at golden hour with rooftop and ground-mounted solar arrays">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#02204b"/>
-      <stop offset="34%"  stop-color="#274a80"/>
-      <stop offset="66%"  stop-color="#9a8a6a"/>
-      <stop offset="86%"  stop-color="#dcae5c"/>
-      <stop offset="100%" stop-color="#e9bd54"/>
+      <stop offset="0%"   stop-color="#5d97bd"/>
+      <stop offset="28%"  stop-color="#93bccc"/>
+      <stop offset="58%"  stop-color="#dbcfa6"/>
+      <stop offset="82%"  stop-color="#f2ca7c"/>
+      <stop offset="100%" stop-color="#f8d472"/>
     </linearGradient>
     <radialGradient id="sunGlow" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0%"   stop-color="#fdf1cf" stop-opacity="0.95"/>
-      <stop offset="55%"  stop-color="#e9bd54" stop-opacity="0.45"/>
+      <stop offset="0%"   stop-color="#fffbee" stop-opacity="1"/>
+      <stop offset="55%"  stop-color="#f2d68f" stop-opacity="0.55"/>
       <stop offset="100%" stop-color="#c88810" stop-opacity="0"/>
     </radialGradient>
     <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#123059"/>
-      <stop offset="100%" stop-color="#01152f"/>
+      <stop offset="0%"   stop-color="#2c5178"/>
+      <stop offset="100%" stop-color="#123059"/>
     </linearGradient>
     <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%"   stop-color="#3cb87d"/>
       <stop offset="100%" stop-color="#0d6140"/>
     </linearGradient>
     <linearGradient id="towerFar" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#5d7ba6"/>
-      <stop offset="100%" stop-color="#8ea5c4"/>
+<stopoffset="0%"stop-color="#8ba6c6"/>
+<stopoffset="100%"stop-color="#b9cade"/>
     </linearGradient>
     <linearGradient id="towerNear" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#0e2d55"/>
-      <stop offset="100%" stop-color="#274a80"/>
+      <stop offset="0%"   stop-color="#1d4272"/>
+      <stop offset="100%" stop-color="#3c669b"/>
     </linearGradient>
   </defs>
 
   <rect width="1600" height="900" fill="url(#sky)"/>
   <ellipse cx="1180" cy="660" rx="330" ry="300" fill="url(#sunGlow)"/>
-  <circle cx="1180" cy="655" r="62" fill="#fdf1cf" opacity="0.9"/>
+  <circle cx="1180" cy="655" r="72" fill="#fffaea" opacity="0.95"/>
 
   <!-- Far skyline, hazy -->
-  <g fill="url(#towerFar)" opacity="0.5">
+  <g fill="url(#towerFar)" opacity="0.62">
     <rect x="60"   y="360" width="150" height="330"/>
     <rect x="1270" y="392" width="200" height="298"/>
     <rect x="1490" y="452" width="110" height="238"/>
@@ -49,7 +49,7 @@
   </g>
 
   <!-- Lit windows catching the low sun -->
-  <g fill="#f2d68f" opacity="0.5">
+  <g fill="#fff3cf" opacity="0.75">
     <rect x="262" y="300" width="18" height="26"/><rect x="298" y="300" width="18" height="26"/>
     <rect x="262" y="352" width="18" height="26"/><rect x="322" y="352" width="18" height="26"/>
     <rect x="298" y="404" width="18" height="26"/><rect x="262" y="456" width="18" height="26"/>
@@ -71,7 +71,7 @@
   </g>
 
   <!-- Tower crane -->
-  <g stroke="#01152f" stroke-width="9" fill="none" stroke-linecap="round">
+  <g stroke="#16304f" stroke-width="9" fill="none" stroke-linecap="round">
     <path d="M640 690 V180 H900"/>
     <path d="M640 240 L760 180"/>
     <path d="M900 180 V252"/>
@@ -94,5 +94,5 @@
   </g>
 
   <!-- Warm light spill across the ground plane -->
-  <ellipse cx="1180" cy="700" rx="420" ry="60" fill="#e0a93c" opacity="0.16"/>
+  <ellipse cx="1180" cy="700" rx="480" ry="72" fill="#f7d98f" opacity="0.24"/>
 </svg>

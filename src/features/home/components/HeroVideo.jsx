@@ -61,8 +61,8 @@ export function HeroVideo({ className }) {
       {/* Scrim, kept as light as the type will allow. It is weighted to the
           left, where the headline sits, and fades out across the frame so the
           footage stays visible rather than sitting under a flat black wash. */}
-      <div className="absolute inset-0 bg-gradient-to-r from-navy-950/80 via-navy-950/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-navy-950/25" />
+      <div className="absolute inset-0 bg-gradient-to-r from-navy-950/65 via-navy-950/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/45 via-transparent to-navy-950/15" />
     </div>
   )
 }

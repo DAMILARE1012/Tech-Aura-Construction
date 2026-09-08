@@ -97,20 +97,22 @@
   --color-sand-200: #e8e2d9;
 
   /* ---- semantic: light theme ---- */
-  --color-surface: #faf8f5;
+  --color-surface: #fcfbf8;
   --color-surface-raised: #ffffff;
-  --color-surface-sunken: #f4f1ec;
-  --color-surface-inverse: #02204b;
-  --color-surface-inverse-raised: #0e2d55;
+  --color-surface-sunken: #f5f2ed;
+  /* Dark bands lifted off pure navy so they read as a deliberate band
+     rather than a hole in the page. Still 14.2:1 against white text. */
+  --color-surface-inverse: #0a2a57;
+  --color-surface-inverse-raised: #143a6e;
 
-  --color-content-strong: #0b0f14;
-  --color-content: #2a3644;
-  --color-content-muted: #536780;
-  --color-content-faint: #74879c;
+  --color-content-strong: #080d13;
+  --color-content: #232f3d;
+  --color-content-muted: #47596e;
+  --color-content-faint: #5f7288;
 
-  --color-line: #cbd3dc;
-  --color-line-soft: #e5e9ee;
-  --color-line-strong: #a3b1c0;
+  --color-line: #d4dbe3;
+  --color-line-soft: #e9edf1;
+  --color-line-strong: #a9b6c4;
 
   --color-brand: #0f7a4d;
   --color-brand-emphasis: #0f7a4d;
@@ -144,10 +146,10 @@
   --color-surface-inverse: #12294a;
   --color-surface-inverse-raised: #1b3860;
 
-  --color-content-strong: #f4f6f8;
-  --color-content: #cbd3dc;
-  --color-content-muted: #a3b1c0;
-  --color-content-faint: #74879c;
+  --color-content-strong: #f7f9fb;
+  --color-content: #d6dde5;
+  --color-content-muted: #aebbc9;
+  --color-content-faint: #8a9aac;
 
   --color-line: #22304a;
   --color-line-soft: #16202f;

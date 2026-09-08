@@ -15,11 +15,11 @@ export function PageHero({ eyebrow, title, intro, image, breadcrumbs, actions, c
             src={image}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 size-full object-cover opacity-35"
+            className="absolute inset-0 size-full object-cover opacity-60"
             loading="eager"
           />
           <div
-            className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/40"
+            className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-950/55 to-navy-950/20"
             aria-hidden="true"
           />
         </>
@@ -28,11 +28,11 @@ export function PageHero({ eyebrow, title, intro, image, breadcrumbs, actions, c
       <Container className="relative">
         {breadcrumbs && <Breadcrumbs trail={breadcrumbs} invert className="mb-6" />}
         {eyebrow && <p className="eyebrow mb-4 text-aura-400">{eyebrow}</p>}
-        <h1 className="text-display max-w-4xl text-4xl text-white sm:text-5xl lg:text-6xl">
+        <h1 className="text-display max-w-4xl text-4xl text-white drop-shadow-[0_2px_16px_rgba(1,21,47,0.6)] sm:text-5xl lg:text-6xl">
           {title}
         </h1>
         {intro && (
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-ink-300 sm:text-lg">{intro}</p>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/85 drop-shadow-[0_1px_10px_rgba(1,21,47,0.6)] sm:text-lg">{intro}</p>
         )}
         {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
         {children}
