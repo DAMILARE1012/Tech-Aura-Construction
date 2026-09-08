@@ -83,7 +83,9 @@ export const SOCIAL_LINKS = [
  */
 export const HERO_MEDIA = {
   videoSrc: import.meta.env.VITE_HERO_VIDEO_URL || '/media/hero.mp4',
-  videoSrcWebm: import.meta.env.VITE_HERO_VIDEO_WEBM || '/media/hero.webm',
+  // Opt-in: only requested when explicitly configured, so a site with no
+  // WebM encode does not fire a guaranteed-404 request on every load.
+  videoSrcWebm: import.meta.env.VITE_HERO_VIDEO_WEBM || '',
   poster: import.meta.env.VITE_HERO_POSTER || '/media/hero-poster.svg',
 }
 

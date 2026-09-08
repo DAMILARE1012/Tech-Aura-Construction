@@ -21,8 +21,8 @@
       <stop offset="100%" stop-color="#0d6140"/>
     </linearGradient>
     <linearGradient id="towerFar" x1="0" y1="0" x2="0" y2="1">
-<stopoffset="0%"stop-color="#8ba6c6"/>
-<stopoffset="100%"stop-color="#b9cade"/>
+      <stop offset="0%"   stop-color="#8ba6c6"/>
+      <stop offset="100%" stop-color="#b9cade"/>
     </linearGradient>
     <linearGradient id="towerNear" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#1d4272"/>

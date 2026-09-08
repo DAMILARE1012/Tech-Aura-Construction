@@ -4,7 +4,12 @@ import { insights, getInsightBySlug } from '@/data/insights'
 import { jobs, getJobBySlug } from '@/data/careers'
 import { leadership } from '@/data/people'
 
-const LATENCY_MS = 320
+/**
+ * Simulated network latency, so loading and skeleton states are exercised in
+ * development instead of resolving instantly. Kept low enough not to make the
+ * site feel sluggish. Set VITE_MOCK_LATENCY_MS=0 to remove it entirely.
+ */
+const LATENCY_MS = Number(import.meta.env.VITE_MOCK_LATENCY_MS ?? 120)
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -180,7 +185,7 @@ const resolveRoute = (method, pathname) => {
  * pointing VITE_API_BASE_URL at a real server is the only change needed.
  */
 export async function mockBackend({ url, method = 'GET', params = {}, body }) {
-  await delay(LATENCY_MS)
+  if (LATENCY_MS > 0) await delay(LATENCY_MS)
 
   const [pathname] = url.split('?')
   const match = resolveRoute(method.toUpperCase(), pathname)

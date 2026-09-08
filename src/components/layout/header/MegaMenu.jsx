@@ -1,3 +1,4 @@
+import { SmartImage } from '@/components/ui/SmartImage'
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { services } from '@/data/services'
@@ -79,11 +80,12 @@ function ColumnsPanel({ mega, onNavigate }) {
       {mega.feature && (
         <div className="hidden py-10 lg:block">
           <p className="eyebrow text-brand">{mega.feature.eyebrow}</p>
-          <img
+          <SmartImage
             src={mega.feature.image}
             alt=""
             aria-hidden="true"
-            loading="lazy"
+            sizes="280px"
+            widths={[280, 560]}
             className="mt-4 aspect-[4/3] w-full rounded-lg object-cover"
           />
           <h3 className="mt-4 font-display text-base font-bold text-content-strong">

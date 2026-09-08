@@ -44,10 +44,22 @@
     <link rel="preload" as="image" href="/media/hero-poster.svg" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- All project, article and team photography is served from here, so
+         warming the connection saves a DNS + TLS round trip on first paint. -->
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+
+    <!-- Fonts load without blocking render: the stylesheet is fetched at
+         `print` priority, then promoted to `all` once it arrives. Combined
+         with `display=swap` in the URL, text paints immediately in the
+         fallback face instead of waiting two round trips. -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap"
+      media="print"
+      onload="this.media='all'; this.onload=null;"
     />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
     <title>Tech-Aura Construction and Engineering Services | Lagos, Nigeria</title>
     <script>
       // Runs before first paint so the page never flashes the wrong theme.

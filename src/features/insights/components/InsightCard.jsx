@@ -1,3 +1,5 @@
+import { SmartImage } from '@/components/ui/SmartImage'
+import { SIZES } from '@/utils/images'
 import { Link } from 'react-router-dom'
 import { cn } from '@/utils/cn'
 import { formatDate } from '@/utils/format'
@@ -18,10 +20,11 @@ export function InsightCard({ insight, layout = 'stack' }) {
             isRow ? 'aspect-square w-28 shrink-0' : 'aspect-[16/10] w-full',
           )}
         >
-          <img
+          <SmartImage
             src={insight.image}
             alt={insight.title}
-            loading="lazy"
+            sizes={isRow ? '112px' : SIZES.card}
+            widths={isRow ? [112, 224, 336] : [400, 600, 800]}
             className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
         </div>

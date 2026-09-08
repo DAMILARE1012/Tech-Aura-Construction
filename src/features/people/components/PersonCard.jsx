@@ -1,13 +1,16 @@
+import { SmartImage } from '@/components/ui/SmartImage'
+import { SIZES } from '@/utils/images'
 import { MapPin } from 'lucide-react'
 
 export function PersonCard({ person }) {
   return (
     <article className="group">
       <div className="relative overflow-hidden bg-surface-sunken">
-        <img
+        <SmartImage
           src={person.image}
           alt={person.name}
-          loading="lazy"
+          sizes={SIZES.card}
+          widths={[300, 450, 600]}
           className="aspect-[5/6] w-full object-cover grayscale transition-all duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
         />
         <div

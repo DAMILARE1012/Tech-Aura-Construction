@@ -53,7 +53,9 @@ export function HeroVideo({ className }) {
           onCanPlay={() => setReady(true)}
           onError={() => setFailed(true)}
         >
-          <source src={HERO_MEDIA.videoSrcWebm} type="video/webm" />
+          {HERO_MEDIA.videoSrcWebm && (
+            <source src={HERO_MEDIA.videoSrcWebm} type="video/webm" />
+          )}
           <source src={HERO_MEDIA.videoSrc} type="video/mp4" />
         </video>
       )}

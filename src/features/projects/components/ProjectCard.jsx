@@ -1,3 +1,5 @@
+import { SmartImage } from '@/components/ui/SmartImage'
+import { SIZES } from '@/utils/images'
 import { MapPin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { cn } from '@/utils/cn'
@@ -18,10 +20,11 @@ export function ProjectCard({ project, featured = false }) {
     <article className={cn('group', featured && 'lg:col-span-2 lg:row-span-2')}>
       <Link to={`/projects/${project.slug}`} className="block">
         <div className="relative overflow-hidden bg-surface-sunken">
-          <img
+          <SmartImage
             src={project.image}
             alt={project.title}
-            loading="lazy"
+            sizes={featured ? SIZES.feature : SIZES.card}
+            widths={featured ? [600, 900, 1200] : [400, 600, 800]}
             className={cn(
               'w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105',
               featured ? 'aspect-[16/10]' : 'aspect-[4/3]',
