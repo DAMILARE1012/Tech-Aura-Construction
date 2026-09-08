@@ -18,7 +18,7 @@ import { jobs } from '../src/data/careers.js'
 const here = dirname(fileURLToPath(import.meta.url))
 const publicDir = resolve(here, '../public')
 
-const SITE_URL = (process.env.SITE_URL || 'https://www.tech-aura.ng').replace(/\/$/, '')
+const SITE_URL = (process.env.SITE_URL || 'https://www.tech-aura.com.ng').replace(/\/$/, '')
 const today = new Date().toISOString().slice(0, 10)
 
 /**

@@ -51,9 +51,18 @@ const routes = {
   'GET /projects/:slug': ({ slug }) => {
     const project = getProjectBySlug(slug)
     if (!project) return notFound('Project')
-    const related = projects
-      .filter((item) => item.sector === project.sector && item.id !== project.id)
-      .slice(0, 3)
+
+    // Same sector first, then backfill with the most recent other work so a
+    // one-off sector (Commercial has a single entry) still shows related
+    // projects instead of an empty section.
+    const sameSector = projects.filter(
+      (item) => item.sector === project.sector && item.id !== project.id,
+    )
+    const others = projects
+      .filter((item) => item.id !== project.id && item.sector !== project.sector)
+      .sort((a, b) => b.year - a.year)
+    const related = [...sameSector, ...others].slice(0, 3)
+
     return ok({ ...project, related })
   },
 
@@ -65,8 +74,11 @@ const routes = {
   'GET /services/:slug': ({ slug }) => {
     const service = getServiceBySlug(slug)
     if (!service) return notFound('Service')
+    // Join on projectSectors, not the display `sectors` copy — the latter
+    // lists client types ("Upstream", "Municipal") that match no project.
     const relatedProjects = projects
-      .filter((project) => service.sectors.includes(project.sector))
+      .filter((project) => (service.projectSectors ?? []).includes(project.sector))
+      .sort((a, b) => b.year - a.year)
       .slice(0, 3)
     return ok({ ...service, relatedProjects })
   },

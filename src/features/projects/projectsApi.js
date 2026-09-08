@@ -1,10 +1,5 @@
 import { apiSlice } from '@/api/apiSlice'
-
-/** Drops 'All' and empty values so they never reach the query string. */
-const cleanParams = (params = {}) =>
-  Object.fromEntries(
-    Object.entries(params).filter(([, value]) => value && value !== 'All' && value !== ''),
-  )
+import { cleanParams } from '@/api/params'
 
 export const projectsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

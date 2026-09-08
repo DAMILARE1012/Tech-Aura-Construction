@@ -5,7 +5,7 @@ import { COMPANY, CONTACT, SOCIAL_LINKS } from './site'
  * structured data and the sitemap is built from this, so it must match the
  * domain you actually deploy to (no trailing slash).
  */
-export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.tech-aura.ng').replace(
+export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.tech-aura.com.ng').replace(
   /\/$/,
   '',
 )

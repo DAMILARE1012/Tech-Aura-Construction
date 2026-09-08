@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react'
+import { Suspense, lazy, useCallback, useEffect, useRef } from 'react'
 import { Menu, Search, X } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -19,8 +19,19 @@ import { useScrolled } from '@/hooks/useScrolled'
 import { ThemeToggle } from '@/features/theme/components/ThemeToggle'
 import { Logo } from './Logo'
 import { MegaMenu } from './MegaMenu'
-import { MobileNav } from './MobileNav'
-import { SearchOverlay } from './SearchOverlay'
+
+/**
+ * Both overlays are mounted only once opened, so they are split out of the
+ * entry chunk. SearchOverlay matters most: it builds a search index over every
+ * project, service, article and vacancy, which would otherwise drag all of
+ * src/data into the bundle every visitor downloads on first paint.
+ */
+const MobileNav = lazy(() =>
+  import('./MobileNav').then((m) => ({ default: m.MobileNav })),
+)
+const SearchOverlay = lazy(() =>
+  import('./SearchOverlay').then((m) => ({ default: m.SearchOverlay })),
+)
 
 const CLOSE_DELAY_MS = 140
 
@@ -165,8 +176,12 @@ export function Header({ transparent = false }) {
           ))}
       </header>
 
-      {mobileNavOpen && <MobileNav />}
-      {searchOpen && <SearchOverlay />}
+      {/* No fallback: these are overlays, and a spinner flashing over the
+          page is worse than the ~1 frame it takes to fetch the chunk. */}
+      <Suspense fallback={null}>
+        {mobileNavOpen && <MobileNav />}
+        {searchOpen && <SearchOverlay />}
+      </Suspense>
     </>
   )
 }

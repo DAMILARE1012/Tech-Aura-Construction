@@ -153,5 +153,6 @@ tmp/
 temp/
 scratch/
 scratchpad/
+.verify-tmp/
 *.tmp
 *.local

@@ -1,14 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Check } from 'lucide-react'
+import { HoneypotField } from '@/components/ui/HoneypotField'
+import { looksAutomated } from '@/utils/spamGuard'
 import { useSubscribeToInsightsMutation } from '../contactApi'
 
 /** Compact email capture used in the footer. */
 export function NewsletterForm() {
   const [email, setEmail] = useState('')
+  const [honeypot, setHoneypot] = useState('')
+  const mountedAt = useRef(0)
+
+  // Stamped after mount so render stays pure, and so the clock starts
+  // when the form is actually interactive.
+  useEffect(() => {
+    mountedAt.current = Date.now()
+  }, [])
   const [subscribe, { isLoading, isSuccess, error }] = useSubscribeToInsightsMutation()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
+
+    if (looksAutomated({ honeypot, startedAt: mountedAt.current })) return
+
     try {
       await subscribe({ email }).unwrap()
       setEmail('')
@@ -28,6 +41,7 @@ export function NewsletterForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <label htmlFor="newsletter-email" className="sr-only">
         Email address
       </label>

@@ -1,9 +1,5 @@
 import { apiSlice } from '@/api/apiSlice'
-
-const cleanParams = (params = {}) =>
-  Object.fromEntries(
-    Object.entries(params).filter(([, value]) => value && value !== 'All' && value !== ''),
-  )
+import { cleanParams } from '@/api/params'
 
 export const insightsApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({

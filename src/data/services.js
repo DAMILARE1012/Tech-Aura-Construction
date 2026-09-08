@@ -1,5 +1,9 @@
 /**
  * Service lines. `slug` drives /services/:slug detail routes.
+ *
+ * `sectors` is display copy (the kinds of client a line serves).
+ * `projectSectors` is the join key into the project portfolio — keep it
+ * aligned with the `sector` values in data/projects.js.
  */
 export const services = [
   {
@@ -21,6 +25,8 @@ export const services = [
       'Interior fit-out, finishes and joinery',
     ],
     sectors: ['Commercial', 'Residential', 'Public Sector', 'Healthcare'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Commercial', 'Residential', 'Public Sector'],
     stat: { value: '41%', label: 'Lower energy bills than comparable builds' },
   },
   {
@@ -39,6 +45,8 @@ export const services = [
       'Piling, foundations and ground improvement',
     ],
     sectors: ['Federal & State Works', 'Estates', 'Industrial Parks'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Infrastructure'],
     stat: { value: '480 km', label: 'Roads and drainage built' },
   },
   {
@@ -57,6 +65,8 @@ export const services = [
       'Brownfield maintenance and turnaround support',
     ],
     sectors: ['Upstream', 'Midstream', 'Depots & Terminals'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Energy'],
     stat: { value: '100%', label: 'Nigerian Content compliance' },
   },
   {
@@ -75,6 +85,8 @@ export const services = [
       'Street lighting and estate power infrastructure',
     ],
     sectors: ['Utilities', 'Industrial', 'Estates', 'Public Sector'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Power', 'Energy'],
     stat: { value: '38 MW', label: 'Installed capacity delivered' },
   },
   {
@@ -93,6 +105,8 @@ export const services = [
       'Environmental impact assessment support',
     ],
     sectors: ['Municipal', 'Industrial', 'Community Development'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Water'],
     stat: { value: '1.2M', label: 'Nigerians served with water access' },
   },
   {
@@ -111,6 +125,8 @@ export const services = [
       'Integrated facility management and helpdesk',
     ],
     sectors: ['Commercial', 'Hospitality', 'Healthcare', 'Retail'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Commercial', 'Residential'],
     stat: { value: '96%', label: 'Contract renewal rate' },
   },
   {
@@ -129,6 +145,8 @@ export const services = [
       'Regulatory approvals and permit management',
     ],
     sectors: ['All sectors'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Infrastructure', 'Commercial', 'Public Sector'],
     stat: { value: 'COREN', label: 'Registered practice' },
   },
   {
@@ -147,6 +165,8 @@ export const services = [
       'Handover, snagging and defect liability management',
     ],
     sectors: ['Developers', 'Public Sector', 'Multinationals'],
+    /** Project sectors this line delivers — used to join the portfolio. */
+    projectSectors: ['Public Sector', 'Commercial'],
     stat: { value: '₦180bn', label: 'Project value managed' },
   },
 ]

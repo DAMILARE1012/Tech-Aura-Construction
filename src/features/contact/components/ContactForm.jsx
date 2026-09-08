@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { HoneypotField } from '@/components/ui/HoneypotField'
+import { looksAutomated } from '@/utils/spamGuard'
 import { Field, Select, TextArea, TextInput } from '@/components/ui/Field'
 import { services } from '@/data/services'
 import { useSubmitEnquiryMutation } from '../contactApi'
@@ -46,6 +48,14 @@ export function ContactForm() {
     topic: searchParams.get('topic') ?? 'project',
   })
   const [errors, setErrors] = useState({})
+  const [honeypot, setHoneypot] = useState('')
+  const mountedAt = useRef(0)
+
+  // Stamped after mount so render stays pure, and so the clock starts
+  // when the form is actually interactive.
+  useEffect(() => {
+    mountedAt.current = Date.now()
+  }, [])
   const [submitEnquiry, { isLoading, isSuccess, data, error, reset }] = useSubmitEnquiryMutation()
 
   const setField = (key) => (event) => {
@@ -59,6 +69,10 @@ export function ContactForm() {
     const nextErrors = validate(values)
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length) return
+
+    // Silently drop automated submissions — an error message would only
+    // tell a bot what to change.
+    if (looksAutomated({ honeypot, startedAt: mountedAt.current })) return
 
     try {
       await submitEnquiry(values).unwrap()
@@ -93,6 +107,8 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
+
       <div className="grid gap-6 sm:grid-cols-2">
         <Field label="Full name" htmlFor="name" required error={errors.name}>
           <TextInput

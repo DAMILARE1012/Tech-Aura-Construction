@@ -16,4 +16,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: https://www.tech-aura.ng/sitemap.xml
+Sitemap: https://www.tech-aura.com.ng/sitemap.xml

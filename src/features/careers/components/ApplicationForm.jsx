@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { HoneypotField } from '@/components/ui/HoneypotField'
+import { looksAutomated } from '@/utils/spamGuard'
 import { Field, TextArea, TextInput } from '@/components/ui/Field'
 import { useSubmitApplicationMutation } from '../careersApi'
 
@@ -21,6 +23,14 @@ const validate = (values) => {
 export function ApplicationForm({ job }) {
   const [values, setValues] = useState(emptyForm)
   const [errors, setErrors] = useState({})
+  const [honeypot, setHoneypot] = useState('')
+  const mountedAt = useRef(0)
+
+  // Stamped after mount so render stays pure, and so the clock starts
+  // when the form is actually interactive.
+  useEffect(() => {
+    mountedAt.current = Date.now()
+  }, [])
   const [submitApplication, { isLoading, isSuccess, data, error }] = useSubmitApplicationMutation()
 
   const setField = (key) => (event) => {
@@ -34,6 +44,10 @@ export function ApplicationForm({ job }) {
     const nextErrors = validate(values)
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length) return
+
+    // Silently drop automated submissions — an error message would only
+    // tell a bot what to change.
+    if (looksAutomated({ honeypot, startedAt: mountedAt.current })) return
 
     try {
       await submitApplication({ ...values, jobId: job.id, jobTitle: job.title }).unwrap()
@@ -57,6 +71,8 @@ export function ApplicationForm({ job }) {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
+
       <Field label="Full name" htmlFor="app-name" required error={errors.name}>
         <TextInput
           id="app-name"

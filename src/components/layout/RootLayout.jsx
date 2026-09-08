@@ -1,9 +1,11 @@
+import { Suspense } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useApplyTheme } from '@/features/theme/useApplyTheme'
 import { JsonLd, organisationSchema, webSiteSchema } from '@/components/seo'
 import { Footer } from './footer/Footer'
 import { Header } from './header/Header'
 import { ScrollToTop } from './ScrollToTop'
+import { Spinner } from '@/components/ui/Spinner'
 
 /** App shell: header, routed page, footer. */
 export function RootLayout() {
@@ -20,7 +22,17 @@ export function RootLayout() {
       <JsonLd schema={[organisationSchema(), webSiteSchema()]} />
       <Header transparent={hasTransparentHeader} />
       <main id="main" className="flex-1">
-        <Outlet />
+        {/* Inside the layout, so a lazily loaded page swaps in beneath a
+            header and footer that stay put, rather than blanking the shell. */}
+        <Suspense
+          fallback={
+            <div className="flex min-h-[70vh] items-center justify-center">
+              <Spinner className="size-10" />
+            </div>
+          }
+        >
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
     </div>
